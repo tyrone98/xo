@@ -6,7 +6,7 @@
 {{- end }}
 type {{ .Name }} struct {
 {{- range .Fields }}
-	{{ .Name }} {{ retype .Type }} // {{ .Col.ColumnName }}
+	{{ .Name }} {{ retype .Type }} `json:"{{ firstLetterToLower .Name }}"` // {{ .Col.ColumnName }}
 {{- end }}
 }
 

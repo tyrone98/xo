@@ -32,9 +32,13 @@ func (a *ArgType) NewTemplateFuncs() template.FuncMap {
 		"hascolumn":          a.hascolumn,
 		"hasfield":           a.hasfield,
 		"getstartcount":      a.getstartcount,
+                "firstLetterToLower": FirstLetterToLower,
 	}
 }
 
+func FirstLetterToLower(name string) string {
+  return strings.ToLower(name[:1]) + name[1:]
+}
 // retype checks typ against known types, and prefixing
 // ArgType.CustomTypePackage (if applicable).
 func (a *ArgType) retype(typ string) string {
