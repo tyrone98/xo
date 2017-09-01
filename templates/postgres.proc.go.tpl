@@ -1,5 +1,5 @@
 {{- $notVoid := (ne .Proc.ReturnType "void") -}}
-{{- $proc := (schema .Schema .Proc.ProcName) -}}
+{{- $proc := (.Proc.ProcName) -}}
 {{- if ne .Proc.ReturnType "trigger" -}}
 // {{ .Name }} calls the stored procedure '{{ $proc }}({{ .ProcParams }}) {{ .Proc.ReturnType }}' on db.
 func {{ .Name }}(db XODB{{ goparamlist .Params true true }}) ({{ if $notVoid }}{{ retype .Return.Type }}, {{ end }}error) {

@@ -1,5 +1,5 @@
 {{- $short := (shortname .Type.Name "err" "sqlstr" "db" "q" "res" "XOLog" .Fields) -}}
-{{- $table := (schema .Schema .Type.Table.TableName) -}}
+{{- $table := (.Type.Table.TableName) -}}
 // {{ .FuncName }} retrieves a row from '{{ $table }}' as a {{ .Type.Name }}.
 //
 // Generated from index '{{ .Index.IndexName }}'.
