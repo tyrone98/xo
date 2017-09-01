@@ -1,4 +1,4 @@
-{{- $table := (schema .Schema .Table.TableName) -}}
+{{- $table := (.Table.TableName) -}}
 {{- if .Comment -}}
 // {{ .Comment }}
 {{- else -}}

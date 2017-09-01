@@ -6,7 +6,7 @@ func {{ .Name }}(db XODB{{ goparamlist .Params true true }}) ({{ if $notVoid }}{
 	var err error
 
 	// sql query
-	const sqlstr = `SELECT {{ $proc }}({{ colvals .Params }})`
+	const sqlstr = "SELECT {{ $proc }}({{ colvals .Params }})"
 
 	// run query
 {{- if $notVoid }}

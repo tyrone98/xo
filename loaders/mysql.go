@@ -11,9 +11,15 @@ import (
 )
 
 func init() {
+	escapeMap := make(map[internal.EscType]func(string) string)
+        escapeMap[internal.TableEsc] = MyEscape
+        escapeMap[internal.SchemaEsc] = MyEscape
+        escapeMap[internal.ColumnEsc] = MyEscape
+   
 	internal.SchemaLoaders["mysql"] = internal.TypeLoader{
 		ParamN:          func(int) string { return "?" },
 		MaskFunc:        func() string { return "?" },
+                Esc:             escapeMap,      
 		ProcessRelkind:  MyRelkind,
 		Schema:          MySchema,
 		ParseType:       MyParseType,
@@ -28,6 +34,13 @@ func init() {
 		IndexColumnList: models.MyIndexColumns,
 		QueryColumnList: MyQueryColumns,
 	}
+}
+
+
+
+
+func MyEscape(name string) string {
+  return "`" + name + "`"
 }
 
 // MySchema retrieves the name of the current schema.

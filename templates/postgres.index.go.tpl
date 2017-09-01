@@ -7,10 +7,10 @@ func {{ .FuncName }}(db XODB{{ goparamlist .Fields true true }}) ({{ if not .Ind
 	var err error
 
 	// sql query
-	const sqlstr = `SELECT ` +
-		`{{ colnames .Type.Fields }} ` +
-		`FROM {{ $table }} ` +
-		`WHERE {{ colnamesquery .Fields " AND " }}`
+	const sqlstr = "SELECT " +
+		"{{ colnames .Type.Fields }} " +
+		"FROM {{ $table }} " +
+		"WHERE {{ colnamesquery .Fields " AND " }}"
 
 	// run query
 	XOLog(sqlstr{{ goparamlist .Fields true false }})
